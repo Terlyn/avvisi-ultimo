@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avvisi - Soluciones Audiovisuales</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Encabezado -->
+    <!-- Encabezado -->
+    <header>
+        <div class="header-top">
+            <div class="logo">
+                <h1>Avvisi</h1>
+            </div>
+            <div class="contact-info">
+                <p>LLÁMANOS 24/7: (+503) 2516 2148 | SOPORTE: contacto@avvisi.com | DIRECCIÓN: Calle 123, Ciudad, País</p>
+            </div>
+            <div class="appointment">
+                <a href="#" class="login-btn" onclick="openLoginModal()">LOGIN</a>
+                <button>RESERVAR CITA</button>
+            </div>
+        </div>
+        <nav class="navbar">
+            <a href="#">INICIO</a>
+            <a href="#">NOSOTROS</a>
+            <a href="#">SERVICIOS</a>
+            <a href="#">PROYECTOS</a>
+            <a href="#">BLOG</a>
+            <a href="#">CONTACTO</a>
+        </nav>
+    </header>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form>
+                <label for="username">Usuario</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit" class="primary-btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sección Principal -->
+    <section class="main-section">
+        <div class="main-content">
+            <h2>Creando Experiencias Audiovisuales</h2>
+            <h1>Construyendo Soluciones de Audiovisuales Desde Cero</h1>
+            <p>Nos especializamos en ofrecer soluciones audiovisuales integrales para satisfacer las necesidades más exigentes de nuestros clientes.</p>
+            <div class="buttons">
+                <button class="primary-btn">CONTÁCTANOS</button>
+                <button class="secondary-btn">NUESTROS SERVICIOS</button>
+            </div>
+        </div>
+        <div class="main-image">
+            <img src="https://via.placeholder.com/500x500" alt="Equipo Audiovisual">
+        </div>
+    </section>
+
+    <!-- Sección Sobre Nosotros -->
+    <section class="about-section">
+        <div class="about-image">
+            <img src="https://via.placeholder.com/300x300" alt="Sobre Nosotros">
+        </div>
+        <div class="about-content">
+            <h3>ACERCA DE NUESTRA EMPRESA</h3>
+            <h2>La Mejor Experiencia en Soluciones Audiovisuales</h2>
+            <p>En Avvisi, contamos con el conocimiento y la tecnología para llevar a cabo proyectos audiovisuales de alta calidad. Nuestro compromiso es superar las expectativas de nuestros clientes en cada proyecto.</p>
+            <div class="services-icons">
+                <div class="service">
+                    <img src="https://via.placeholder.com/50" alt="Servicios">
+                    <p>Servicios Profesionales de Audio y Video</p>
+                </div>
+                <div class="service">
+                    <img src="https://via.placeholder.com/50" alt="Soporte">
+                    <p>Soporte Urgente para Nuestros Clientes</p>
+                </div>
+            </div>
+            <button class="primary-btn">CONTÁCTANOS</button>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -254,3 +254,20 @@ body {
 .login-btn:hover {
     color: #0056b3;
 }
+.navbar {
+    margin-left: 250px; /* Mantiene la barra principal */
+    position: fixed;
+    width: calc(100% - 250px);
+    background: #34495e;
+    color: white;
+    padding: 10px 20px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info {
+    /* Alinea el avatar a la izquierda dentro de la barra */
+    margin-left: 20px;
+}

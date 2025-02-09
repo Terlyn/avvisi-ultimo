@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #333;
+        }
+        .btn {
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+        }
+        table {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+        }
+        body {
+            background-color: #f8f9fa;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar {
+            width: 200px;
+            height: 100vh;
+            position: fixed;
+            background: #9E9E9E;
+            color: white;
+            padding: 20px 10px;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .sidebar.hidden {
+            width: 60px;
+            padding: 10px 5px;
+        }
+
+        .sidebar.hidden a {
+            display: none;
+        }
+
+        .sidebar.hidden button {
+            width: 60px;
+        }
+
+        .sidebar button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .sidebar img {
+            width: 100%;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .sidebar:hover {
+            width: 200px;
+            padding: 20px 10px;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .sidebar a:hover {
+            background: #e65a00;
+        }
+
+        .navbar {
+            background-color: #000000;
+            margin-left: 200px;
+            width: calc(100% - 200px);
+            color: white;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 10px 20px;
+            transition: margin-left 0.3s ease-in-out;
+        }
+
+        .sidebar.hidden ~ .navbar {
+            margin-left: 60px;
+            width: calc(100% - 60px);
+        }
+
+        .navbar .user-info img {
+            border: 2px solid #ff6600;
+        }
+       /* Media Queries para hacer responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+
+            .sidebar.show {
+                width: 200px;
+                padding: 20px 10px;
+            }
+
+            .navbar {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="sidebar hidden">
+        <!-- Botón con la imagen -->
+        <button class="btn" onclick="location.href='/dashboard'">
+            <img src="{{ url_for('static', filename='bg__.png') }}" width="50%"/>
+        </button>
+        <a href="/dashboard">Inicio</a>
+        <a href="/users">Cuentas y Privilegios</a>
+        <a href="/backup">Crear Respaldo</a>
+        <a href="/ratings">Calificación Promedio</a>
+    </div>
+
+    <!-- Barra superior -->
+    <div class="navbar">
+        <div class="user-info">
+            <!-- Dropdown con el avatar -->
+            <div class="dropdown">
+                <img src="https://via.placeholder.com/30" alt="Avatar" class="rounded-circle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                    <li><a class="dropdown-item" href="/profile/{{user.id}}">Perfil</a></li>
+                    <li><a class="dropdown-item" href="/settings">Configuración</a></li>
+                    <li><a class="dropdown-item text-danger" href="/logout">Cerrar sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+    <script>
+        document.querySelector('.sidebar').addEventListener('mouseenter', function () {
+            this.classList.remove('hidden');
+        });
+
+        document.querySelector('.sidebar').addEventListener('mouseleave', function () {
+            this.classList.add('hidden');
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
